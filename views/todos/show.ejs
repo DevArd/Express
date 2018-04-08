@@ -1,0 +1,31 @@
+<% include header %> 
+
+<form action="/todos/<%= todo.id %>" method="POST" class="ui form">
+    <div class="field">
+        <label for="task">Task</label>
+        <textarea name="task" id="task"><%= todo.message %></textarea>
+        <label for="state">State</label>
+        <select name="state" id="state" class="ui search dropdown" >
+            <option value="">Select</option>
+            <option value="IN PROGRESS">IN PROGRESS</option>
+            <option value="DONE">DONE</option>
+        </select>
+    </div>
+    <button type="submit" class="ui blue labeled submit icon button">
+        <i class="icon edit"></i>
+        Modifier
+    </button>
+</form>
+
+<div class="ui comments">
+    <h3 class="ui header dividing">Todo</h3>
+    <div class="comments">
+        <div class="content">
+            <h4 class="content"> <%= todo.message %> - <%= todo.completion %> <br/> Crée le <%= todo.createAt.format('DD-MM-YYYY') %> - Modifié le <%= todo.updatedAt.format('DD-MM-YYYY') %></h4>
+            <a href="http://localhost:8080/todos"><input type="button" value="Supprimer" class="ui red submit icon button"></a>
+        </div>
+    </div>
+    <br/>
+</div>
+
+<% include footer %>
